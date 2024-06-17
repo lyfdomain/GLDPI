@@ -12,22 +12,25 @@ model, alphabet = esm.pretrained.esm2_t33_650M_UR50D()
 batch_converter = alphabet.get_batch_converter()
 model.eval()  # disables dropout for deterministic results
 
-dataset="davis"
+dataset_name="biosnap"
 
-dataset = json.load(open('./'+dataset+'_proteins.txt'),object_pairs_hook = OrderedDict)
+# dataset = json.load(open('./'+dataset_name+'_proteins.txt'),object_pairs_hook = OrderedDict)
+dataset = np.loadtxt('./'+dataset_name+'/protein.txt', dtype=str)
+
 max_len = 1024
 data=[]
-# for i in range(len(dataset)):
-#     seq=dataset[i]
-#     if len(seq) > max_len-2:
-#         seq = seq[:max_len-2]
-#     data.append((i, seq))
 
-for ii in dataset.keys():
-    seq=dataset[ii]
+for i in range(len(dataset)):
+    seq=dataset[i]
     if len(seq) > max_len-2:
         seq = seq[:max_len-2]
-    data.append((1, seq))
+    data.append((i, seq))
+
+# for ii in dataset.keys():
+#     seq=dataset[ii]
+#     if len(seq) > max_len-2:
+#         seq = seq[:max_len-2]
+#     data.append((1, seq))
 
 
 batch_labels, batch_strs, batch_tokens = batch_converter(data)
@@ -60,7 +63,7 @@ print(token_representations.size())
 
 
 sequence_representations = token_representations.cpu().numpy()
-np.savetxt("./esm_"+dataset+".txt", sequence_representations, delimiter=',', fmt="%.8f")
+np.savetxt("./esm_"+dataset_name+".txt", sequence_representations, delimiter=',', fmt="%.8f")
 
 
 
