@@ -3,7 +3,7 @@
 environment:
 python3.9 pytorch1.11.0+cu11.3
 
-1.Ran data_process.py to obtain drug similarity and protein similarity.
+1.Ran data_process.py to obtain drug similarity matrix and protein similarity matrix.
 
 2.Run train.py to get the result.
 
