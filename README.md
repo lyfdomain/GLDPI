@@ -1,6 +1,6 @@
 # GLDPI
 
-#1.Ran data_process to obtain drug similarity and protein similarity
+#Ran data_process to obtain drug similarity and protein similarity
 #Run data_devide_davis.py (or data_devide_drugbank.py) to reproduce cross-validation data for each fold.
 Run CombDPI_davis.py (or CombDPI_drugbank.py) to predict and evaluate our prediction results.
 Run biosnap_data_process.py to generate correlation matrices (or extract the files we uploaded in the relevant folder).
