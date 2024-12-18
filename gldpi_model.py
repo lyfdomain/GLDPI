@@ -5,30 +5,22 @@ class Autoencoder(nn.Module):
     def __init__(self, input_size, input_size2, hidden_size):
         super(Autoencoder, self).__init__()
         self.encoder = nn.Sequential(
-            nn.Linear(input_size, 1024),  # 输入层
-            nn.BatchNorm1d(1024),
+            nn.Linear(input_size, 2048),  # 输入层
+            nn.BatchNorm1d(2048),
             # nn.Dropout(0.1),
             nn.ReLU(),
-            nn.Linear(1024, 512),  # 隐藏层1
+            nn.Linear(2048, 512),  # 隐藏层1
             nn.BatchNorm1d(512),
-            nn.ReLU(),
-            nn.Linear(512, hidden_size),  # 隐藏层2
-            nn.Sigmoid(),  # 保证输出值在[0,1]范围内
-            # nn.BatchNorm1d(hidden_size),
-            # nn.ReLU(),
+            nn.Tanh(),
         )
         self.decoder = nn.Sequential(
-            nn.Linear(input_size2, 1024),  # 隐藏层1
-            nn.BatchNorm1d(1024),
+            nn.Linear(input_size2, 2048),  # 隐藏层1
+            nn.BatchNorm1d(2048),
             # nn.Dropout(0.1),
             nn.ReLU(),
-            nn.Linear(1024, 512),  # 隐藏层2
+            nn.Linear(2048, 512),  # 隐藏层2
             nn.BatchNorm1d(512),
-            nn.ReLU(),
-            nn.Linear(512, hidden_size),  # 输出层
-            nn.Sigmoid(),  # 保证输出值在[0,1]范围内
-            # nn.BatchNorm1d(hidden_size),
-            # nn.ReLU(),
+            nn.Tanh(),
         )
 
     def forward(self, x, y):
@@ -62,6 +54,6 @@ class GBALoss(nn.Module):
         # print(S.size(), sr.size())
         SN3 = torch.div(S3, sn3)
         los3 = torch.sum((SN3 - dti) ** 2 * cof) / (torch.sum(cof))
-        los = 1 * los1 + 1 * los2 + 0.5 * los3
+        los = 1 * los1 + 1 * los2 + 0.33 * los3
 
         return los
