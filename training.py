@@ -19,7 +19,7 @@ os.environ["CUDA_VISIBLE_DEVICES"] = "1"
 
 
 torch.manual_seed(100)
-jihe = "biosnap"
+jihe = "dataset/biosnap"
 drug_data=[]
 
 with open("./"+jihe+"/train.csv", newline='') as csvfile:
@@ -139,7 +139,7 @@ for epoch in range(num_epochs):
         model_max = copy.deepcopy(autoencoder)
     print(area, aps, "AUC_max", auc_max)
 
-torch.save(model_max.cpu(), jihe+'_predti.pth')
+torch.save(model_max.cpu(), 'predti.pth')
 
 
 
