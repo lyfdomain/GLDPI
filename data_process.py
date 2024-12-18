@@ -11,7 +11,7 @@ from Bio.Align import substitution_matrices
 # from Bio.SubsMat import MatrixInfo as matlist
 
 drug_data=[]
-jihe="biosnap"
+jihe="dataset/biosnap"
 
 
 with open("./"+jihe+"/full.csv", newline='') as csvfile:
@@ -23,7 +23,6 @@ with open("./"+jihe+"/full.csv", newline='') as csvfile:
         # 处理每一行数据
         # print(', '.join(row))
         drug_data.append(row)
-# drug_data=np.loadtxt("./unseen_drug/train.csv", delimiter=',',dtype=str, skiprows=1)
 drug_data= np.array(drug_data)
 print(drug_data[0])
 
