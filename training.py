@@ -44,10 +44,10 @@ jihe = "biosnap"
 dti = np.loadtxt("./"+jihe+"/dti.txt").astype(dtype="int64")
 SR = np.loadtxt('./'+jihe+'/DS.txt')
 SP = np.loadtxt('./'+jihe+'/PS.txt')
-SP = sim_recon(SP, 6)
+SP = sim_recon(SP, 3)
 
-leraning_rate=0.0001
-hidden_size = 256
+leraning_rate=0.00001
+hidden_size = 512
 num_epochs = 2000
 morgan_dim = 1024
 
