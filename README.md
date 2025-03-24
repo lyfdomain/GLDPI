@@ -21,7 +21,7 @@ This is a PyTorch implementation of GLDPI, and the code includes the following f
 
 # Dataset
 
-The BindingDB dataset can be acquired at \url{https://github.com/peizhenbai/DrugBAN/main/datasets}; the Biosnap dataset can be obtained at \url{https://github.com/samsledje/ConPLex_dev/tree/main/dataset/BIOSNAP}; the Davis dataset can be found at \url{https://github.com/hkmztrk/DeepDTA/tree/master/data/davis}.
+The BindingDB dataset can be acquired at https://github.com/peizhenbai/DrugBAN/main/datasets; the Biosnap dataset can be obtained at https://github.com/samsledje/ConPLex_dev/tree/main/dataset/BIOSNAP; the Davis dataset can be found at https://github.com/hkmztrk/DeepDTA/tree/master/data/davis.
 
 # Ran the code
 
