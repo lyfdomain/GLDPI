@@ -5,7 +5,7 @@ Accurate prediction of drug-protein interactions by maintaining the original top
 This is a PyTorch implementation of GLDPI, and the code includes the following files:
 
 * data_preprocess.py
-    - Generate the corresponding drug SMILES list and protein amino acid sequence list based on datasets (Biosnap et al.), and compute the drug similarity matrix based on the drug SMILES, as well as the protein similarity matrix based on the protein amino acid sequences.
+    - Generate the corresponding drug SMILES list and protein amino acid sequence list based on datasets (biosnap et al.), and compute the drug similarity matrix based on the drug SMILES, as well as the protein similarity matrix based on the protein amino acid sequences.
 *  model.py
     - Set prediction framework and GBA_loss
 *  utils.py
