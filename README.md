@@ -18,6 +18,13 @@ This is a PyTorch implementation of GLDPI, and the code includes the following f
 * numpy==1.26.2
 * sklearn== 1.3.2
 
+
+# Dataset
+
+The BindingDB dataset can be acquired at \url{https://github.com/peizhenbai/DrugBAN/main/datasets}; the Biosnap dataset can be obtained at \url{https://github.com/samsledje/ConPLex_dev/tree/main/dataset/BIOSNAP}; the Davis dataset can be found at \url{https://github.com/hkmztrk/DeepDTA/tree/master/data/davis}.
+
+# Ran the code
+
 1.Extract esm_biosnap.zip to obtain the protein esm2 coding file  esm_biosnap.txt
 
 2.Ran data_process.py to obtain drug similarity matrix DS.txt, protein similarity matrix PS.txt, drug SMILES list drug.txt, protein sequences list protein.txt and drug-protein interaction matrix dti.txt.
