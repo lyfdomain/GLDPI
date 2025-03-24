@@ -15,9 +15,8 @@ import os
 
 
 os.environ["CUDA_VISIBLE_DEVICES"] = "1"
-jihe = "biosnap"
-
 torch.manual_seed(10)
+
 jihe = "dataset/biosnap"
 drug_data=[]
 
