@@ -12,13 +12,13 @@ from sklearn.metrics import roc_auc_score, average_precision_score
 from sklearn.metrics.pairwise import cosine_similarity
 from utils import *
 from model import *
-
-
 import os
+
+
 os.environ["CUDA_VISIBLE_DEVICES"] = "1"
+jihe = "biosnap"
 
-
-torch.manual_seed(100)
+torch.manual_seed(10)
 jihe = "dataset/biosnap"
 drug_data=[]
 
@@ -37,8 +37,6 @@ with open("./" + jihe + "/val.csv", newline='') as csvfile:
     for row in reader:
         val_data.append(row)
 val_data = np.array(val_data)
-
-
 
 jihe = "biosnap"
 dti = np.loadtxt("./"+jihe+"/dti.txt").astype(dtype="int64")
@@ -140,8 +138,6 @@ for epoch in range(num_epochs):
     print(area, aps, "AUC_max", auc_max)
 
 torch.save(model_max.cpu(), 'predti.pth')
-
-
 
 
 
