@@ -6,9 +6,9 @@ This is a PyTorch implementation of GLDPI, and the code includes the following f
 
 *  model.py
 
-*  train.py
-
 *  untils.py
+
+*  train.py
 
 
 environment:
