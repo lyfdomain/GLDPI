@@ -1,5 +1,16 @@
 # Accurate prediction of drug-protein interactions by maintaining the original topological relationships among embeddings (GLDPI)
 
+This is a PyTorch implementation of GLDPI, and the code includes the following files:
+
+data_process.py
+
+model.py
+
+train.py
+
+untils.py
+
+
 environment:
 python3.9 pytorch1.11.0+cu11.3
 
