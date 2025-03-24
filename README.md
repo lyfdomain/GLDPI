@@ -9,7 +9,7 @@ This is a PyTorch implementation of GLDPI, and the code includes the following f
 *  untils.py
 
 *  train.py
-
+  Pre-training, fine-tuning, and inference
 
 # Main Requirements
 
