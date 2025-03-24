@@ -13,7 +13,8 @@ This is a PyTorch implementation of GLDPI, and the code includes the following f
     - sim_recon()--Calculate the relative distance between proteins
 *  train.py
     - Set parameters and train the model
-
+*  prediction.py
+    - Inference and evaluat predictive performance
 # Main Requirements
 
 * python==3.9 
