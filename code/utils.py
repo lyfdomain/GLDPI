@@ -4,11 +4,10 @@ from rdkit import Chem
 from rdkit.Chem import AllChem
 
 
-
+# Calculate the Morgan fingerprints of drugs
 def morgan_smiles(line, dim_num):
     mol = Chem.MolFromSmiles(line)
     feat = AllChem.GetMorganFingerprintAsBitVect(mol, 2, dim_num)
-
     return feat
 
 
