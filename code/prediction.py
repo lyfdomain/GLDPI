@@ -19,16 +19,27 @@ class Autoencoder(nn.Module):
         return encoded, decoded
 
 jihe = "biosnap"
-
 morgan_dim = 1024
-
 model = torch.load("predti.pth")
 model.eval()
 
-dti = np.loadtxt("./"+ jihe +"/dti.txt").astype(dtype="int64")
-drug = np.loadtxt("./"+ jihe +"/drug.txt", dtype=str, comments=None)
-protein = np.loadtxt("./"+ jihe +"/protein.txt", dtype=str)
-ind = list(np.loadtxt("./"+ jihe +"/test_index.txt").astype(dtype="int64"))
+dti = np.loadtxt("./dataset/"+ jihe +"/dti.txt").astype(dtype="int64")
+drug = np.loadtxt("./dataset/"+ jihe +"/drug.txt", dtype=str, comments=None)
+protein = np.loadtxt("./dataset/"+ jihe +"/protein.txt", dtype=str)
+
+drug_data = []
+with open("./dataset/" + jihe + "/test.csv", newline='') as csvfile:
+    reader = csv.reader(csvfile, delimiter=',', quotechar='"')
+    next(reader)
+    for row in reader:
+        # print(', '.join(row))
+        drug_data.append(row)
+drug_data = np.array(drug_data)
+
+ind = []
+for i in range(len(drug_data)):
+    if drug_data[i, 0] in drug and drug_data[i, 1] in protein:
+        ind.append([list(drug).index(drug_data[i, 0]), list(protein).index(drug_data[i, 1])])
 
 tt = []
 for i in range(len(drug)):
@@ -36,7 +47,7 @@ for i in range(len(drug)):
     tt.append(xd)
 tt = np.array(tt)
 
-pp = np.loadtxt("./"+ jihe +"/esm2_"+ jihe +".txt", delimiter=",")
+pp = np.loadtxt("./dataset/"+ jihe +"/esm2_"+ jihe +".txt", delimiter=",")
 
 x=torch.from_numpy(tt).float()
 y=torch.from_numpy(pp).float()
