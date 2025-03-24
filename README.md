@@ -2,13 +2,13 @@
 
 This is a PyTorch implementation of GLDPI, and the code includes the following files:
 
-data_process.py
+  data_process.py
 
-model.py
+  model.py
 
-train.py
+  train.py
 
-untils.py
+  untils.py
 
 
 environment:
