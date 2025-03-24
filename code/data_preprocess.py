@@ -8,7 +8,6 @@ import numpy as np
 from tqdm import trange
 from Bio.Align import PairwiseAligner
 from Bio.Align import substitution_matrices
-# from Bio.SubsMat import MatrixInfo as matlist
 
 drug_data=[]
 jihe="dataset/biosnap"
