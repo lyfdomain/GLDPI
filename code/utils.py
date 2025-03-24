@@ -10,7 +10,7 @@ def morgan_smiles(line, dim_num):
     feat = AllChem.GetMorganFingerprintAsBitVect(mol, 2, dim_num)
     return feat
 
-
+# Reconstruct the similarities between proteins
 def sim_recon(S, t):
     sorted_drug = (S).argsort(axis=1).argsort(axis=1)
     np.fill_diagonal(sorted_drug, 0)
