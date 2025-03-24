@@ -3,11 +3,11 @@
 This is a PyTorch implementation of GLDPI, and the code includes the following files:
 
 * data_process.py
-
+    - Pre-training, fine-tuning, and inference
 *  model.py
-
+    - Pre-training, fine-tuning, and inference
 *  untils.py
-
+    - Pre-training, fine-tuning, and inference
 *  train.py
     - Pre-training, fine-tuning, and inference
 
