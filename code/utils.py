@@ -12,11 +12,11 @@ def morgan_smiles(line, dim_num):
 
 # Reconstruct the similarities between proteins
 def sim_recon(S, t):
-    sorted_drug = (S).argsort(axis=1).argsort(axis=1)
-    np.fill_diagonal(sorted_drug, 0)
-    sorted_drug = (len(S) - 1) * np.ones((len(S), len(S))) - sorted_drug
-    sorted_drug[sorted_drug == 0] = 1
-    sorted_drug = 1 / ((sorted_drug) ** (1 / t))  # *(sorted_drug+1))
-    np.fill_diagonal(sorted_drug, 1)
-    SS = (sorted_drug + sorted_drug.T) / 2
+    sorted_pro = (S).argsort(axis=1).argsort(axis=1)
+    np.fill_diagonal(sorted_pro, 0)
+    sorted_pro = (len(S) - 1) * np.ones((len(S), len(S))) - sorted_pro
+    sorted_pro[sorted_pro == 0] = 1
+    sorted_pro = 1 / ((sorted_pro) ** (1 / t))  # *(sorted_pro+1))
+    np.fill_diagonal(sorted_pro, 1)
+    SS = (sorted_pro + sorted_pro.T) / 2
     return SS
