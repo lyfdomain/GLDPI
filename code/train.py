@@ -4,7 +4,6 @@ import torch
 import csv
 import torch.nn as nn
 import torch.optim as optim
-# import matplotlib.pyplot as plt
 import numpy as np
 from torch.nn import functional
 import sklearn
@@ -112,16 +111,15 @@ autoencoder = Autoencoder(input_size, input_size2, hidden_size)
 # 定义损失函数和优化器
 autoencoder = autoencoder.cuda()
 model_max = copy.deepcopy(autoencoder)
-criterion = nn.MSELoss()
 
-criterion2 = GBALoss()
+criterion = GBALoss()
 optimizer = optim.Adam(autoencoder.parameters(), lr=leraning_rate)
 
 for epoch in range(num_epochs):
     autoencoder.train()
     optimizer.zero_grad()
     e, f = autoencoder(x, y)
-    loss1 = criterion2(e, sr, f, sp, dti, cof)
+    loss1 = criterion(e, sr, f, sp, dti, cof)
     loss = 1 * loss1
     loss.backward()
     optimizer.step()
