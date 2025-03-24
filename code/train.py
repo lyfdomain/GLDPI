@@ -55,7 +55,7 @@ pro = np.loadtxt('./'+jihe+'/protein.txt', dtype=str)
 drug=list(dru)
 protein=list(pro)
 
-pp=np.loadtxt('./'+jihe+'/esm_'+jihe+'.txt', delimiter=",")
+pp=np.loadtxt('./'+jihe+'/esm2_'+jihe+'.txt', delimiter=",")
 
 tt = []
 for i in range(len(dru)):
