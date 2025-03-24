@@ -10,7 +10,7 @@ This is a PyTorch implementation of GLDPI, and the code includes the following f
     - Set prediction framework and GBA_loss
 *  utils.py
     - morgan_smiles()--Calculate the Morgan fingerprints of drugs
-    - sim_recon()--Calculate the relative distance between proteins
+    - sim_recon()--Reconstruct the similarities between proteins
 *  train.py
     - Set parameters and train the model
 *  prediction.py
