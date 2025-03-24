@@ -10,8 +10,8 @@ from torch.nn import functional
 import sklearn
 from sklearn.metrics import roc_auc_score, average_precision_score
 from sklearn.metrics.pairwise import cosine_similarity
-from utils_gldpi import *
-from gldpi_model import *
+from utils import *
+from model import *
 
 
 import os
