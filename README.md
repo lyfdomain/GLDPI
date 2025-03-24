@@ -11,8 +11,12 @@ This is a PyTorch implementation of GLDPI, and the code includes the following f
 *  train.py
 
 
-environment:
-python3.9 pytorch1.11.0+cu11.3
+# Main Requirements
+
+* python==3.9 
+* pytorch==1.11.0+cu11.3
+* numpy==1.26.2
+* sklearn== 1.3.2
 
 1.Extract esm_biosnap.zip to obtain the protein esm2 coding file  esm_biosnap.txt
 
