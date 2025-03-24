@@ -8,7 +8,7 @@ This is a PyTorch implementation of GLDPI, and the code includes the following f
     - Generate the corresponding drug SMILES list and protein amino acid sequence list based on datasets (Biosnap et al.), and compute the drug similarity matrix based on the drug SMILES, as well as the protein similarity matrix based on the protein amino acid sequences.
 *  model.py
     - Set prediction framework and GBA_loss
-*  untils.py
+*  utils.py
     - morgan_smiles()--Calculate the Morgan fingerprints of drugs
     - sim_recon()--Calculate the relative distance between proteins
 *  train.py
