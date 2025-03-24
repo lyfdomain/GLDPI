@@ -9,7 +9,7 @@ This is a PyTorch implementation of GLDPI, and the code includes the following f
 *  model.py
     - Pre-training, fine-tuning, and inference
 *  untils.py
-    - morgan_smiles()--
+    - morgan_smiles()--Calculate the Morgan fingerprints of multiple drugs
 *  train.py
     - Pre-training, fine-tuning, and inference
 
