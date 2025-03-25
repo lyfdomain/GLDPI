@@ -4,13 +4,13 @@ from rdkit import Chem
 from rdkit.Chem import AllChem
 
 
-# Calculate the Morgan fingerprints of drugs
+############# Calculate the Morgan fingerprints of drugs ############# 
 def morgan_smiles(line, dim_num):
     mol = Chem.MolFromSmiles(line)
     feat = AllChem.GetMorganFingerprintAsBitVect(mol, 2, dim_num)
     return feat
 
-# Reconstruct the similarities between proteins
+##########  Reconstruct the similarities between proteins  ###########
 def sim_recon(S, t):
     sorted_pro = (S).argsort(axis=1).argsort(axis=1)
     np.fill_diagonal(sorted_pro, 0)
