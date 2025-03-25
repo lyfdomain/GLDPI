@@ -31,7 +31,7 @@ This is a PyTorch implementation of GLDPI, and the code includes the following f
 
 # Train
 
-1. Run data_preprocess.py generate the required intermediate files
+1. Run data_preprocess.py to generate the required intermediate files
 
 2. Run train.py to train GLDPI model
 
