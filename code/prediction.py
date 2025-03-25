@@ -75,7 +75,7 @@ for i in range(len(ind)):
     pr.append(pre[ind[i][0],ind[i][1]])
     tr.append(dti[ind[i][0],ind[i][1]])
 
-##########  Evaluate the Prediction Results Using accuracy,F1_score,AUROC　and AUPR Metrics #####
+########## Evaluate the Prediction Results Using accuracy, F1_score, AUROC and AUPR Metrics #####
 y_label = tr
 y_pred = pr
 preci, recal, thres = precision_recall_curve(y_label, y_pred)
