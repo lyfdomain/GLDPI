@@ -7,7 +7,6 @@ class Autoencoder(nn.Module):
         self.encoder = nn.Sequential(
             nn.Linear(input_size, 2048),  # 输入层
             nn.BatchNorm1d(2048),
-            # nn.Dropout(0.1),
             nn.ReLU(),
             nn.Linear(2048, 512),  # 隐藏层1
             nn.BatchNorm1d(512),
@@ -16,7 +15,6 @@ class Autoencoder(nn.Module):
         self.decoder = nn.Sequential(
             nn.Linear(input_size2, 2048),  # 隐藏层1
             nn.BatchNorm1d(2048),
-            # nn.Dropout(0.1),
             nn.ReLU(),
             nn.Linear(2048, 512),  # 隐藏层2
             nn.BatchNorm1d(512),
