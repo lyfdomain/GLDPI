@@ -29,13 +29,12 @@ This is a PyTorch implementation of GLDPI, and the code includes the following f
 * The Biosnap dataset can be obtained at https://github.com/samsledje/ConPLex_dev/tree/main/dataset/BIOSNAP.
 * The Davis dataset can be found at https://github.com/hkmztrk/DeepDTA/tree/master/data/davis.
 
-# Ran the code
+# Train
 
-1.Extract esm_biosnap.zip to obtain the protein esm2 coding file  esm_biosnap.txt
+1.Ran data_preprocess.py generate the required intermediate files
 
-2.Ran data_process.py to obtain drug similarity matrix DS.txt, protein similarity matrix PS.txt, drug SMILES list drug.txt, protein sequences list protein.txt and drug-protein interaction matrix dti.txt.
+2.Ran train.py to train GLDPI model
 
-3.Run train.py to get the result.
+# Prediction 
 
-Contacts
-If you have any questions, please email Li Yanfei (lyfinf@163.com)
+Run prediction.py to test and evaluate the prediction performance of GLDPI model
