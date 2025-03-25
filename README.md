@@ -23,7 +23,7 @@ This is a PyTorch implementation of GLDPI, and the code includes the following f
 * sklearn== 1.3.2
 
 
-# Datasetu
+# Dataset
 
 * The BindingDB dataset can be acquired at https://github.com/peizhenbai/DrugBAN/main/datasets.
 * The Biosnap dataset can be obtained at https://github.com/samsledje/ConPLex_duev/tree/main/dataset/BIOSNAP.
