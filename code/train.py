@@ -17,6 +17,9 @@ import os
 os.environ["CUDA_VISIBLE_DEVICES"] = "1"
 torch.manual_seed(10)
 
+
+############  Read the training set and validation set data   ###############
+
 jihe = "dataset/biosnap"
 drug_data=[]
 
@@ -36,11 +39,13 @@ with open("./" + jihe + "/val.csv", newline='') as csvfile:
         val_data.append(row)
 val_data = np.array(val_data)
 
-jihe = "biosnap"
+
 dti = np.loadtxt("./"+jihe+"/dti.txt").astype(dtype="int64")
 SR = np.loadtxt('./'+jihe+'/DS.txt')
 SP = np.loadtxt('./'+jihe+'/PS.txt')
 SP = sim_recon(SP, 3)
+
+#####################  Set relevant parameters   ###########################
 
 leraning_rate=0.00001
 hidden_size = 512
@@ -56,6 +61,8 @@ protein=list(pro)
 
 pp=np.loadtxt('./'+jihe+'/esm2_'+jihe+'.txt', delimiter=",")
 
+############  Calculat the Morgan Fingerprints of Drugs   #################
+
 tt = []
 for i in range(len(dru)):
     xd = morgan_smiles(dru[i], morgan_dim)
@@ -68,6 +75,7 @@ for i in range(len(val_data)):
     if val_data[i, 0] in drug and val_data[i, 1] in protein:
         ind_val.append([drug.index(val_data[i, 0]), protein.index(val_data[i, 1])])
 
+################  Collect ground truth labels  #############################
 
 tr = []
 for i in range(len(ind_val)):
@@ -75,6 +83,7 @@ for i in range(len(ind_val)):
 
 auc_max=0
 
+##############  Collect prediction values  ###################################
 def test(e, f):
     output1 = e.detach().cpu().numpy()
     output2 = f.detach().cpu().numpy()
@@ -84,16 +93,20 @@ def test(e, f):
         pr.append(pre[ind_val[i][0], ind_val[i][1]])
     return pr
 
-
 cof = np.zeros(dti.shape)
+
+############  Collect training data index  ###################################
 
 ind = []
 for i in range(len(drug_data)):
     if drug_data[i,0] in drug and drug_data[i,1] in protein:
         ind.append([drug.index(drug_data[i,0]), protein.index(drug_data[i,1])])
 
+
+############  Mask non-training data  #########################################
 for i in range(len(ind)):
     cof[ind[i][0], ind[i][1]] = 1
+
 
 dti = torch.from_numpy(dti).float().cuda()
 cof = torch.from_numpy(cof).float().cuda()
@@ -107,13 +120,14 @@ input_size = len(tt[0])
 input_size2 = len(pp[0])
 autoencoder = Autoencoder(input_size, input_size2, hidden_size)
 
-# 定义损失函数和优化器
+############  Define the loss function and optimizer ##########################
+
 autoencoder = autoencoder.cuda()
 model_max = copy.deepcopy(autoencoder)
-
 criterion = GBALoss()
 optimizer = optim.Adam(autoencoder.parameters(), lr=leraning_rate)
 
+##########################  Train model #######################################
 for epoch in range(num_epochs):
     autoencoder.train()
     optimizer.zero_grad()
@@ -133,7 +147,8 @@ for epoch in range(num_epochs):
         auc_max = area
         model_max = copy.deepcopy(autoencoder)
     print(area, aps, "AUC_max", auc_max)
-
+    
+##########################  Save model #######################################
 torch.save(model_max.cpu(), 'predti.pth')
 
 
