@@ -20,13 +20,17 @@ class Autoencoder(nn.Module):
 
 jihe = "biosnap"
 morgan_dim = 1024
-model = torch.load("predti.pth")
-model.eval()
 
+################  Load pre-trained model  ########################
+model = torch.load("predti.pth")
+model.eval()r
+
+##################  Load relevant data  ###########################
 dti = np.loadtxt("./dataset/"+ jihe +"/dti.txt").astype(dtype="int64")
 drug = np.loadtxt("./dataset/"+ jihe +"/drug.txt", dtype=str, comments=None)
 protein = np.loadtxt("./dataset/"+ jihe +"/protein.txt", dtype=str)
 
+####################  Read test data  ##############################
 drug_data = []
 with open("./dataset/" + jihe + "/test.csv", newline='') as csvfile:
     reader = csv.reader(csvfile, delimiter=',', quotechar='"')
@@ -36,11 +40,13 @@ with open("./dataset/" + jihe + "/test.csv", newline='') as csvfile:
         drug_data.append(row)
 drug_data = np.array(drug_data)
 
+####################  Collect test data index #########################
 ind = []
 for i in range(len(drug_data)):
     if drug_data[i, 0] in drug and drug_data[i, 1] in protein:
         ind.append([list(drug).index(drug_data[i, 0]), list(protein).index(drug_data[i, 1])])
-
+        
+############### Convert drug smiles to Morgan fingerprint #############
 tt = []
 for i in range(len(drug)):
     xd = morgan_smiles(drug[i], morgan_dim)
@@ -52,21 +58,26 @@ pp = np.loadtxt("./dataset/"+ jihe +"/esm2_"+ jihe +".txt", delimiter=",")
 x=torch.from_numpy(tt).float()
 y=torch.from_numpy(pp).float()
 
+
+###########  Generate drug and protein representations #################              
 output1, output2 = model(x,y)
 output1=output1.detach().numpy()
 output2=output2.detach().numpy()
 
+##################  Generate prediction matrix #########################
 pre=cosine_similarity(output1,output2)
 
+
+##########  Collect test ground truth labels and prediction values #####
 pr=[]
 tr=[]
 for i in range(len(ind)):
     pr.append(pre[ind[i][0],ind[i][1]])
     tr.append(dti[ind[i][0],ind[i][1]])
 
+##########  Evaluate the Prediction Results Using accuracy,F1_score,AUROC　and AUPR Metrics #####＃＃＃＃＃＃＃＃
 y_label = tr
 y_pred = pr
-
 preci, recal, thres = precision_recall_curve(y_label, y_pred)
 best_thre_id = np.argmax(2*preci * recal/((preci + recal)+1e-8))
 
