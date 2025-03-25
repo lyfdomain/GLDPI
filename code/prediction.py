@@ -78,7 +78,7 @@ f1score = f1_score(y_label, y_pred_s)
 print("F1", f1score)
 fpr, tpr, thresholds = sklearn.metrics.roc_curve(tr, pr)
 area = sklearn.metrics.auc(fpr, tpr)
-print("the Area Under the PRCurve is:", area)
+print("the Area Under the ROCurve is:", area)
 aps = average_precision_score(tr, pr)
 print("the AP score is:", aps)
 
