@@ -23,17 +23,17 @@ This is a PyTorch implementation of GLDPI, and the code includes the following f
 * sklearn== 1.3.2
 
 
-# Dataset
+# Datasetu
 
 * The BindingDB dataset can be acquired at https://github.com/peizhenbai/DrugBAN/main/datasets.
-* The Biosnap dataset can be obtained at https://github.com/samsledje/ConPLex_dev/tree/main/dataset/BIOSNAP.
+* The Biosnap dataset can be obtained at https://github.com/samsledje/ConPLex_duev/tree/main/dataset/BIOSNAP.
 * The Davis dataset can be found at https://github.com/hkmztrk/DeepDTA/tree/master/data/davis.
 
 # Train
 
-1. Ran data_preprocess.py generate the required intermediate files
+1. Run data_preprocess.py generate the required intermediate files
 
-2. Ran train.py to train GLDPI model
+2. Run train.py to train GLDPI model
 
 # Prediction 
 
