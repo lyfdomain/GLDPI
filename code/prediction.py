@@ -83,9 +83,9 @@ best_thre_id = np.argmax(2*preci * recal/((preci + recal)+1e-8))
 
 best_thre = thres[best_thre_id]
 y_pred_s = [1 if i else 0 for i in (y_pred >= best_thre)]
-accuracy = accuracy_score(y_label, y_pred_s)
+accuracy = sklearn.metrics.accuracy_score(y_label, y_pred_s)
 print("Acc", accuracy)
-f1score = f1_score(y_label, y_pred_s)
+f1score = sklearn.metrics.f1_score(y_label, y_pred_s)
 print("F1", f1score)
 fpr, tpr, thresholds = sklearn.metrics.roc_curve(tr, pr)
 area = sklearn.metrics.auc(fpr, tpr)
