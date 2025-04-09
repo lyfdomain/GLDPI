@@ -21,6 +21,7 @@ torch.manual_seed(10)
 ############  Read the training set and validation set data   ###############
 
 jihe = "dataset/biosnap"
+data_name = "biosnap"
 drug_data=[]
 
 with open("./"+jihe+"/train.csv", newline='') as csvfile:
@@ -59,7 +60,7 @@ pro = np.loadtxt('./'+jihe+'/protein.txt', dtype=str)
 drug=list(dru)
 protein=list(pro)
 
-pp=np.loadtxt('./'+jihe+'/esm2_'+jihe+'.txt', delimiter=",")
+pp=np.loadtxt('./'+jihe+'/esm2_'+ data_name +'.txt', delimiter=",")
 
 ############  Calculat the Morgan Fingerprints of Drugs   #################
 
