@@ -24,7 +24,7 @@ jihe = "dataset/biosnap"
 data_name = "biosnap"
 drug_data=[]
 
-with open("./"+jihe+"/train.csv", newline='') as csvfile:
+with open("../"+jihe+"/train.csv", newline='') as csvfile:
     reader = csv.reader(csvfile, delimiter=',', quotechar='"')
     next(reader)
     for row in reader:
@@ -33,7 +33,7 @@ with open("./"+jihe+"/train.csv", newline='') as csvfile:
 drug_data= np.array(drug_data)
 
 val_data = []
-with open("./" + jihe + "/val.csv", newline='') as csvfile:
+with open("../" + jihe + "/val.csv", newline='') as csvfile:
     reader = csv.reader(csvfile, delimiter=',', quotechar='"')
     next(reader)
     for row in reader:
@@ -41,9 +41,9 @@ with open("./" + jihe + "/val.csv", newline='') as csvfile:
 val_data = np.array(val_data)
 
 
-dti = np.loadtxt("./"+jihe+"/dti.txt").astype(dtype="int64")
-SR = np.loadtxt('./'+jihe+'/DS.txt')
-SP = np.loadtxt('./'+jihe+'/PS.txt')
+dti = np.loadtxt("../"+jihe+"/dti.txt").astype(dtype="int64")
+SR = np.loadtxt('../'+jihe+'/DS.txt')
+SP = np.loadtxt('../'+jihe+'/PS.txt')
 SP = sim_recon(SP, 3)
 
 #####################  Set relevant parameters   ###########################
@@ -54,13 +54,13 @@ num_epochs = 2000
 morgan_dim = 1024
 
 
-dru = np.loadtxt('./'+jihe+'/drug.txt', dtype=str, comments=None)
-pro = np.loadtxt('./'+jihe+'/protein.txt', dtype=str)
+dru = np.loadtxt('../'+jihe+'/drug.txt', dtype=str, comments=None)
+pro = np.loadtxt('../'+jihe+'/protein.txt', dtype=str)
 
 drug=list(dru)
 protein=list(pro)
 
-pp=np.loadtxt('./'+jihe+'/esm2_'+ data_name +'.txt', delimiter=",")
+pp=np.loadtxt('../'+jihe+'/esm2_'+ data_name +'.txt', delimiter=",")
 
 ############  Calculat the Morgan Fingerprints of Drugs   #################
 
