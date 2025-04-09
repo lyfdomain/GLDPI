@@ -13,7 +13,7 @@ drug_data=[]
 jihe="dataset/biosnap"
 
 #####################  Read data  #############################
-with open("./"+jihe+"/full.csv", newline='') as csvfile:
+with open("../"+jihe+"/full.csv", newline='') as csvfile:
     # 使用csv模块读取CSV文件
     reader = csv.reader(csvfile, delimiter=',', quotechar='"')
     next(reader)
@@ -39,8 +39,8 @@ for j in drug_data[:,1]:
         protein.append(j)
 
 #####################  Save drug and protein lists  #####################
-np.savetxt("./"+jihe+"/drug.txt",  np.array(drug), fmt="%s" )
-np.savetxt("./"+jihe+"/protein.txt", np.array(protein), fmt="%s" )
+np.savetxt("../"+jihe+"/drug.txt",  np.array(drug), fmt="%s" )
+np.savetxt("../"+jihe+"/protein.txt", np.array(protein), fmt="%s" )
 
 
 ############ Generate and save drug protein interaction matrix  #########
@@ -73,7 +73,7 @@ for i in trange(len(fp_list1)):
         similarity_matrix[i, j] = similarity
 
 ############  Save the drug similarity matrix   ######################
-np.savetxt("./"+jihe+"/DS.txt", similarity_matrix )
+np.savetxt("../"+jihe+"/DS.txt", similarity_matrix )
 
 
 ############  Calculate the drug similarity matrix   ######################
@@ -102,6 +102,6 @@ for i in trange(len(records1)):
 
 ############  Save the protein similarity matrix   ######################
 print(score_matrix)
-np.savetxt("./"+jihe+"/PS.txt",score_matrix)
+np.savetxt("../"+jihe+"/PS.txt",score_matrix)
 
 
