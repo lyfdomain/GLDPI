@@ -24,16 +24,16 @@ morgan_dim = 1024
 
 ################  Load pre-trained model  ########################
 model = torch.load("predti.pth")
-model.eval()r
+model.eval()
 
 ##################  Load relevant data  ###########################
-dti = np.loadtxt("./dataset/"+ jihe +"/dti.txt").astype(dtype="int64")
-drug = np.loadtxt("./dataset/"+ jihe +"/drug.txt", dtype=str, comments=None)
-protein = np.loadtxt("./dataset/"+ jihe +"/protein.txt", dtype=str)
+dti = np.loadtxt("../dataset/"+ jihe +"/dti.txt").astype(dtype="int64")
+drug = np.loadtxt("../dataset/"+ jihe +"/drug.txt", dtype=str, comments=None)
+protein = np.loadtxt("../dataset/"+ jihe +"/protein.txt", dtype=str)
 
 ####################  Read test data  ##############################
 drug_data = []
-with open("./dataset/" + jihe + "/test.csv", newline='') as csvfile:
+with open("../dataset/" + jihe + "/test.csv", newline='') as csvfile:
     reader = csv.reader(csvfile, delimiter=',', quotechar='"')
     next(reader)
     for row in reader:
@@ -54,7 +54,7 @@ for i in range(len(drug)):
     tt.append(xd)
 tt = np.array(tt)
 
-pp = np.loadtxt("./dataset/"+ jihe +"/esm2_"+ jihe +".txt", delimiter=",")
+pp = np.loadtxt("../dataset/"+ jihe +"/esm2_"+ jihe +".txt", delimiter=",")
 
 x=torch.from_numpy(tt).float()
 y=torch.from_numpy(pp).float()
