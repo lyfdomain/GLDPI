@@ -8,6 +8,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.metrics import roc_auc_score, average_precision_score, roc_curve, confusion_matrix, precision_recall_curve, precision_score
 from torch.nn import functional
 from utils import *
+from model import *
 
 class Autoencoder(nn.Module):
     def __init__(self, input_size, input_size2, hidden_size):
